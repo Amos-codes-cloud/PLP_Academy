@@ -1,10 +1,17 @@
-def calculate_original_price(discounted_price, discount_percent):
-    original_price = discounted_price / (1 - discount_percent / 100)
-    return original_price
+def calculate_discount(price, discount_percent):
+    if discount_percent >= 20:
+        discount_amount = price * (discount_percent / 100)
+        final_price = price - discount_amount
+        return final_price
+    else:
+        return price
 
-discounted_price = float(input("Enter the discounted price: "))
+original_price = float(input("Enter the original price of the item: "))
 discount_percentage = float(input("Enter the discount percentage: "))
 
-original_price = calculate_original_price(discounted_price, discount_percentage)
+final_price = calculate_discount(original_price, discount_percentage)
 
-print("Original price:", original_price)
+if final_price == original_price:
+    print("No discount applied. Final price:", final_price)
+else:
+    print("Final price after discount:", final_price)
